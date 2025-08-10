@@ -4,8 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Mail, Phone, MapPin, ArrowRight, Linkedin, Github, Globe, Download,
-  ExternalLink, Megaphone, LineChart, Search, Palette, Cpu, Zap,
-  CheckCircle, ChevronRight, Moon, Sun
+  ExternalLink, CheckCircle, ChevronRight, Moon, Sun
 } from 'lucide-react';
 
 const DATA = {
@@ -20,7 +19,7 @@ const DATA = {
     linkedin: 'https://www.linkedin.com/in/philip-ademola-ajao',
     github: 'https://github.com/IlfordMulticoncept',
     website: 'https://',
-    resume: '/resume.pdf', // put your PDF in /public/resume.pdf
+    resume: '/resume.pdf',
   },
   highlights: [
     { label: 'Paid & Organic Growth' },
@@ -181,11 +180,7 @@ function Hero() {
   return (
     <section id="home" className="pt-14 sm:pt-20">
       <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
           <h1 className="text-3xl sm:text-5xl font-semibold leading-tight tracking-tight">
             Hi, I’m <span className="text-red-600">{DATA.name}</span> — {DATA.role}
           </h1>
@@ -193,9 +188,7 @@ function Hero() {
             {DATA.headline}
           </p>
           <div className="mt-6 flex flex-wrap gap-3">
-            {DATA.highlights.map((h, i) => (
-              <Pill key={i}>{h.label}</Pill>
-            ))}
+            {DATA.highlights.map((h, i) => <Pill key={i}>{h.label}</Pill>)}
           </div>
           <div className="mt-8 flex flex-wrap gap-3 text-sm">
             <a href={`mailto:${DATA.email}`} className="inline-flex items-center gap-2 hover:text-red-600"><Mail className="w-4 h-4" />{DATA.email}</a>
@@ -210,6 +203,19 @@ function Hero() {
         </motion.div>
       </div>
     </section>
+  );
+}
+
+function DemoPages() {
+  return (
+    <Section id="demo-pages" title="Demo Landing Pages">
+      <ul className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+        <li><a className="block rounded-xl border px-4 py-3 hover:text-red-600" href="/hello-fresh">HelloFresh Promo</a></li>
+        <li><a className="block rounded-xl border px-4 py-3 hover:text-red-600" href="/sleepwell-mas">Sleepwell MAS (B2B)</a></li>
+        <li><a className="block rounded-xl border px-4 py-3 hover:text-red-600" href="/ilford-supplies">Ilford Supplies (E-com)</a></li>
+        <li><a className="block rounded-xl border px-4 py-3 hover:text-red-600" href="/webinar">Webinar Signup</a></li>
+      </ul>
+    </Section>
   );
 }
 
@@ -377,6 +383,7 @@ export default function Page() {
       <Header />
       <main>
         <Hero />
+        <DemoPages />
         <Projects />
         <Experience />
         <Skills />
